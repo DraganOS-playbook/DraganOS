@@ -11,7 +11,6 @@ actions:
   exeDir: true
   exe: "BACKUPSERVICES.CMD"
 
-- !service: {name: 'SystemEventsBroker', operation: change, startup: '4'}
 - !service: {name: 'WlanSvc', operation: change, startup: '4'}
 - !service: {name: 'RmSvc', operation: change, startup: '4'}
 - !service: {name: 'AppVClient', operation: change, startup: '4'}
@@ -25,12 +24,10 @@ actions:
 - !service: {name: 'CertPropSvc', operation: change, startup: '4'}
 - !service: {name: 'cbdhsvc', operation: change, startup: '4'}
 - !service: {name: 'CaptureService', operation: change, startup: '4'}
-- !service: {name: 'TimeBrokerSvc', operation: change, startup: '4'}
 - !service: {name: 'DisplayEnhancementService', operation: change, startup: '4'}
 - !service: {name: 'DispBrokerDesktopSvc', operation: change, startup: '4'}
 - !service: {name: 'GamingServices', operation: change, startup: '4'}
 - !service: {name: 'GamingServicesNet', operation: change, startup: '4'}
-- !service: {name: 'ShellHWDetection', operation: change, startup: '4'}
 - !service: {name: 'webthreatdefsvc', operation: change, startup: '4'}
 - !service: {name: 'webthreatdefusersvc', operation: change, startup: '4'}
 - !service: {name: 'WPDBusEnum', operation: change, startup: '4'}
