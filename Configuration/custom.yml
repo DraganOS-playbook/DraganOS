@@ -1,0 +1,13 @@
+---
+title: Root Playbook File
+description: Runs all of the Playbook files
+privilege: Admin
+actions: []
+features:
+- features\DraganOS\start.yml
+- features\DraganOS\software.yml
+- features\DraganOS\appx.yml
+- features\DraganOS\Services.yml
+- features\DraganOS\components.yml
+- features\DraganOS\registry.yml
+- features\DraganOS\FinalTasks.yml

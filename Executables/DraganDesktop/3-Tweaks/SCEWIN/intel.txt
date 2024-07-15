@@ -1,0 +1,118 @@
+﻿Native ASPM - Disabled
+ACPI Debug - Disabled
+Low Power S0 Idle Capability - Disabled
+PUIS Enable - Disabled
+
+EC Notification - Disabled
+EC CS Debug Light - Disabled
+EC Low Power Mode - Disabled
+
+Sensor Standby - Disabled
+CS PL1 Limit - Disabled
+Intel Ready Mode Technology - Disabled
+Intel RMT State - Disabled
+PCI Delay Optimization - Enabled
+MSI enabled - Enabled
+C6DRAM - Disabled
+PECI - Disabled
+BIST - Disabled
+AP threads Idle Manner - RUN Loop
+Intel(R) Speed Shift Technology Interrupt Control - Disabled
+Boot performance mode - Turbo Performance
+EIST - Disabled
+Race To Halt (RTH) - Disabled
+
+Intel(R) Adaptive Boost Technology - Disabled
+Intel C-State - Disabled
+C-State Auto Demotion - Disabled
+C-State Un-demotion - Disabled
+Package C-State Demotion - Disabled
+Package C-State Un-demotion - Disabled
+CState Pre-Wake - Disabled
+Package C State Limit - C0
+
+Interrupt Redirection Mode Selection - Round robin
+
+Energy Efficient P-state - Disabled
+Energy Efficient Turbo - Disabled
+
+Bi-directional PROCHOT# - Disabled
+Disable PROCHOT# Output - Enabled
+PROCHOT Response - Disabled
+PROCHOT Lock - Disabled
+ACPI T-States - 0
+
+Power Loss Notification Feature - Disabled
+P-state Capping - Disabled
+ZPODD - Disabled
+BCLK Aware Adaptive Voltage - Disabled
+TVB Ratio Clipping - Disabled
+Ring Down Bin - Disabled
+
+LTR - Disabled
+
+JTAG C10 Power Gate - Disabled
+
+Re-Size BAR Support - Enabled
+
+LTR Mechanism Enable - Disabled
+Clock Power Management - Disabled
+USB 2.0 Controller Mode - HiSpeed
+
+DMI Link ASPM Control - Disabled
+Power Down Unused Lanes - Disabled
+Tcc Activation Offset - 0
+EPG DIMM Idd3N - 0
+EPG DIMM Idd3P - 0
+
+RC6(Render Standby) - Disabled
+
+PowerDown Energy Ch0Dimm0 - 0
+PowerDown Energy Ch0Dimm1 - 0
+PowerDown Energy Ch1Dimm0 - 0
+PowerDown Energy Ch1Dimm1 - 0
+
+PCI Express Clock Gating - Disabled
+PCI Express Power Gating - Disabled
+
+L1 Substates - Disabled
+
+LAN Wake From DeepSx - Disabled
+Wake on LAN Enable - Disabled
+Wake on WLAN and BT Enable - Disabled
+
+DeepSx Wake on WLAN and BT Enable - Disabled
+
+Legacy IO Low Latency - Enabled
+PCH Cross Throttling - Disabled
+Pcie Pll SSC - 0.0%
+Enable 8254 Clock Gate - Disabled
+USB2 PHY Sus Well Power Gating - Disabled
+Aggressive LPM Support - Disabled
+
+Power Down Mode - Disabled
+PCIE Spread Spectrum - Disabled
+Thermal Throttling Level - Manual
+T0 Level - 0
+T1 Level - 0 
+T2 Level - 0
+Enable Hibernation - 0
+
+----------------------------------------------------------------
+Round Trip Latency - Enabled
+Turn Around Timing Training - Enabled
+CPU Wakeup Timer - Disabled
+OBFF - Disabled
+
+PERR# Generation - Disabled
+SERR# Generation - Disabled
+
+PME SCI - Disabled
+Advanced Error Reporting - Disabled
+
+----------------------------------------------------------------
+
+Intel(R) Turbo Boost Max Technology 3.0 - Disabled
+Intel Turbo Boost - Disabled
+Voltage Optimization - Disabled
+TVB Voltage Optimizations - Disabled

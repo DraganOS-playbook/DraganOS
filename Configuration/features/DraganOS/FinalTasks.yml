@@ -1,0 +1,73 @@
+---
+title: Final Tasks
+description: Finalizing The DraganOS Playbook Installation
+actions:
+
+- !writeStatus: {status: "Copying Files"}
+- !run:
+  exeDir: true
+  exe: "Copy.CMD"
+
+- !writeStatus: {status: "Applying WallPaper"}
+- !run: 
+  exeDir: true
+  exe: "WALLPAPER.CMD"
+  weight: 90
+
+- !run:
+  exeDir: true
+  exe: "PowerShell"
+  args: '-NoP -ExecutionPolicy Bypass -File SVCGROUP.ps1'
+  weight: 50
+
+- !taskKill: {name: "explorer", ignoreErrors: true}
+- !taskKill: {name: "SearchApp", ignoreErrors: true}
+- !taskKill: {name: "SearchHost", ignoreErrors: true}
+- !taskKill: {name: "RuntimeBroker", ignoreErrors: true}
+
+- !writeStatus: {status: "Removing logs"}
+- !run:
+  exeDir: true
+  exe: "PowerShell"
+  args: '-NoP -ExecutionPolicy Bypass -File CLEANER.cmd'
+  weight: 150
+
+- !writeStatus: {status: "Configuring Power Settings"}
+- !run: 
+  exeDir: true
+  exe: "POW.CMD"
+  weight: 30
+
+- !writeStatus: {status: "Installing Virtual installer APP"}
+- !run: 
+  exeDir: true
+  exe: "install.CMD"
+  weight: 100
+
+- !writeStatus: {status: "Configuring StartMenu"}
+- !run:
+  exeDir: true
+  exe: "STARTMENU.CMD"
+  weight: 100
+
+- !writeStatus: {status: "Configuring Laptop Settings"}
+- !run: 
+  exeDir: true
+  exe: "Laptop.CMD"
+
+- !writeStatus: {status: "Configuring Device Manager"}
+- !run: 
+  exeDir: true
+  exe: "DEVMANVIEW.CMD"
+
+- !writeStatus: {status: "Disabling Defender"}
+- !run:
+  exeDir: true
+  exe: "Defender.CMD"
+  weight: 40
+
+- !writeStatus: {status: "Finalize"}
+- !run: 
+  exeDir: true
+  exe: "FINALIZE.CMD"
+  weight: 150
