@@ -1,4 +1,4 @@
-@echo OFF
+@echo off
 
 for /f "usebackq tokens=2 delims=\" %%A in (`reg query "HKEY_USERS" ^| findstr /r /x /c:"HKEY_USERS\\S-.*" /c:"HKEY_USERS\\AME_UserHive_[^_]*"`) do (
     REM If the "Volatile Environment" key exists, that means it is a proper user. Built in accounts/SIDs don't have this key.
@@ -6,11 +6,8 @@ for /f "usebackq tokens=2 delims=\" %%A in (`reg query "HKEY_USERS" ^| findstr /
         if not errorlevel 1 call :OPENSHELLREG "%%A"
 )
 
-@echo ON
+start "OpenShellSetup.exe" /qn /quiet ADDLOCAL=StartMenu
 
-OpenShellSetup_4_4_191.exe /qn /quiet ADDLOCAL=StartMenu
-
-@echo ON
 reg add "HKU\%~1\SOFTWARE\OpenShell" /t REG_SZ /f
 reg add "HKU\%~1\SOFTWARE\OpenShell\OpenShell" /t REG_SZ /f
 reg add "HKU\%~1\SOFTWARE\OpenShell\OpenShell\Settings" /t REG_SZ /f

@@ -5,7 +5,7 @@ param (
 	[switch]$NoPassword,
 	[ValidateSet('Dependencies', 'Requirements', 'WinverRequirement', 'Verification', IgnoreCase = $true)]
 	[array]$Removals,
-	[string]$FileName = "Dragan Test"
+	[string]$FileName = "Dragan"
 )
 
 $removals | % { Set-Variable -Name "remove$_" -Value $true }
