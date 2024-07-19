@@ -11,7 +11,12 @@ actions:
   exeDir: true
   exe: "BACKUPSERVICES.CMD"
 
-- !service: {name: 'PerfHost', operation: change, startup: '4'}
+- !service: {name: 'DmEnrollmentSvc', operation: change, startup: '4'}
+- !service: {name: 'WinRM', operation: change, startup: '4'}
+- !service: {name: 'vmicheartbeat', operation: change, startup: '4'}
+- !service: {name: 'vmictimesync', operation: change, startup: '4'}
+- !service: {name: 'HvHost', operation: change, startup: '4'}
+- !service: {name: 'WManSvc', operation: change, startup: '4'}
 - !service: {name: 'AppReadiness', operation: change, startup: '4'}
 - !service: {name: 'bam', operation: change, startup: '4'}
 - !service: {name: 'EFS', operation: change, startup: '4'}
