@@ -62,6 +62,7 @@ actions:
 - !run:
   exeDir: true
   exe: "ONED.bat"
+  option: "remove-oned"
   weight: 50
 
 - !writeStatus: {status: "Configuring Laptop Settings"}

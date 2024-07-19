@@ -116,6 +116,7 @@ actions:
 - !service: {name: 'UdkUserSvc', operation: change, startup: '4'}
 - !service: {name: 'QWAVE', operation: change, startup: '4'}
 - !service: {name: 'QWAVEdrv', operation: change, startup: '4'}
+- !service: {name: 'rdyboost', operation: change, startup: '4'}
 
 - !taskKill: {name: "SecurityHealthService", ignoreErrors: true}
 

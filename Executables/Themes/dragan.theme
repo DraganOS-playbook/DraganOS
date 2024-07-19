@@ -1,0 +1,30 @@
+[Theme]
+DisplayName=Dragan 2.0
+ThemeId={9F1AEB0B-4DD7-44EF-8734-D4F82A341818}
+
+[Control Panel\Desktop]
+Wallpaper=%windir%\Post-Install\Wallpaper\default_desktop.jpg
+Pattern=
+MultimonBackgrounds=0
+PicturePosition=4
+WindowsSpotlight=0
+
+[Control Panel\Cursors]
+DefaultValue=No
+
+[Sounds]
+SchemeName=No Sounds
+
+[VisualStyles]
+Path=%windir%\resources\themes\Aero\Aero.msstyles
+ColorStyle=NormalColor
+Size=NormalSize
+AutoColorization=0
+Transparency=0
+ColorizationColor=0X0F000000
+SystemMode=Dark
+AppMode=Light
+VisualStyleVersion=10
+
+[MasterThemeSelector]
+MTSM=B66000
