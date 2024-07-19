@@ -11,6 +11,8 @@ actions:
   exeDir: true
   exe: "BACKUPSERVICES.CMD"
 
+- !service: {name: 'AppReadiness', operation: change, startup: '4'}
+- !service: {name: 'bam', operation: change, startup: '4'}
 - !service: {name: 'EFS', operation: change, startup: '4'}
 - !service: {name: 'PeerDistSvc', operation: change, startup: '4'}
 - !service: {name: 'NetTcpPortSharing', operation: change, startup: '4'}
@@ -93,7 +95,6 @@ actions:
 - !service: {name: 'RemoteAccess', operation: change, startup: '4'}
 - !service: {name: 'TapiSrv', operation: change, startup: '4'}
 - !service: {name: 'WpnService', operation: change, startup: '4'}
-- !service: {name: 'WpnUserService', operation: change, startup: '4'}
 - !service: {name: 'icssvc', operation: change, startup: '4'}
 - !service: {name: 'fhsvc', operation: change, startup: '4'}
 - !service: {name: 'irmon', operation: change, startup: '4'}
