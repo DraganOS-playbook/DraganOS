@@ -8,24 +8,25 @@ actions:
   - !taskKill: {name: "SecurityHealthService"}
   - !taskKill: {name: "SecurityHealthSystray"}
   - !taskKill: {name: "SkypeBackgroundHost"}
+  - !taskKill: {name: "OneDrive"}
 
-  - !file: {path: "%windir%\\System32\\smartscreen.exe"}
-  - !file: {path: "%windir%\\System32\\smartscreenps.dll"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthSystray.exe"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthService.exe"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthAgent.dll"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthHost.exe"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthSSO.dll"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthCore.dll"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthProxyStub.dll"}
-  - !file: {path: "%windir%\\System32\\SecurityHealthUdk.dll"}
-  - !file: {path: "%ProgramW6432%\\Windows Defender", weight: 30}
-  - !file: {path: "%ProgramData%\\Microsoft\\Windows Defender", weight: 30}
-  - !file: {path: "%ProgramFiles(x86)%\\Windows Defender", weight: 30}
-  - !file: {path: "%windir%\\System32\\drivers\\WdNisDrv.sys"}
-  - !file: {path: "%ProgramW6432%\\Windows Defender Advanced Threat Protection"}
-  - !file: {path: "%SystemDrive%\\ProgramData\\Microsoft\\Windows Defender Advanced Threat Protection"}
-  - !file: {path: "%windir%\\System32\\drivers\\cldflt.sys"}
+  - !file: {path: "%windir%\\System32\\smartscreen.exe", operation: delete}
+  - !file: {path: "%windir%\\System32\\smartscreenps.dll", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthSystray.exe", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthService.exe", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthAgent.dll", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthHost.exe", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthSSO.dll", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthCore.dll", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthProxyStub.dll", operation: delete}
+  - !file: {path: "%windir%\\System32\\SecurityHealthUdk.dll", operation: delete}
+  - !file: {path: "%ProgramW6432%\\Windows Defender", weight: 30, operation: delete}
+  - !file: {path: "%ProgramData%\\Microsoft\\Windows Defender", weight: 30, operation: delete}
+  - !file: {path: "%ProgramFiles(x86)%\\Windows Defender", weight: 30, operation: delete}
+  - !file: {path: "%windir%\\System32\\drivers\\WdNisDrv.sys", operation: delete}
+  - !file: {path: "%ProgramW6432%\\Windows Defender Advanced Threat Protection", operation: delete}
+  - !file: {path: "%SystemDrive%\\ProgramData\\Microsoft\\Windows Defender Advanced Threat Protection", operation: delete}
+  - !file: {path: "%windir%\\System32\\drivers\\cldflt.sys", operation: delete}
 
   # Allow uninstall of Edge, EdgeUpdate and WebView
   - !registryValue: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge', value: 'NoRemove', type: REG_DWORD, data: '0'}

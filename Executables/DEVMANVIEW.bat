@@ -2,7 +2,6 @@
 CD /d %~dp0
 
 devmanview.exe /disable "PCI Memory Controller"
-devmanview.exe /disable "PCI Simple Communications Controller"
 devmanview.exe /disable "PCI standard RAM Controller"
 devmanview.exe /disable "AURA LED Controller"
 devmanview.exe /disable "Communications Port (COM1)"
@@ -16,6 +15,7 @@ devmanview.exe /disable "AMD SMBus"
 devmanview.exe /disable "AMD Crash Defender Service"
 devmanview.exe /disable "AMD External Events Utility"
 devmanview.exe /disable "UMBus root bus enumerator"
+devmanview.exe /disable "Micosoft GS Wavetable Synth"
 devmanview.exe /disable "Microsoft Hyper-V Virtualization Infrastructure Driver"
 devmanview.exe /disable "Virtual Disk Enumerator (Microsoft)"
 devmanview.exe /disable "Enumerator of virtual network adapters NIC"

@@ -11,6 +11,7 @@ actions:
   exeDir: true
   exe: "BACKUPSERVICES.CMD"
 
+- !service: {name: 'EFS', operation: change, startup: '4'}
 - !service: {name: 'PeerDistSvc', operation: change, startup: '4'}
 - !service: {name: 'NetTcpPortSharing', operation: change, startup: '4'}
 - !service: {name: 'CertPropSvc', operation: change, startup: '4'}
@@ -54,7 +55,6 @@ actions:
 - !service: {name: 'P9RdrService', operation: change, startup: '4'}
 - !service: {name: 'PhoneSvc', operation: change, startup: '4'}
 - !service: {name: 'wuauserv', operation: change, startup: '4'}
-# - !service: {name: 'rdyboost', operation: change, startup: '4'}
 - !service: {name: 'RetailDemo', operation: change, startup: '4'}
 - !service: {name: 'SysMain', operation: change, startup: '4'}
 - !service: {name: 'SCardSvr', operation: change, startup: '4'}

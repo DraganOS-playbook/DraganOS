@@ -15,10 +15,7 @@ actions:
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance', value: 'DisableDiagnosticTracing', type: REG_DWORD, data: '1'}
 
 # - Disable transparency
-- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'EnableTransparency', type: REG_DWORD, data: '0', option: "disable-transparency"}
-
-# - Disable passwordless sign-in for microsoft accounts
-- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device', value: 'DevicePasswordLessBuildVersion', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'EnableTransparency', type: REG_DWORD, data: '0'}
 
 # - Set Launching applications and unsafe files to Enable
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3', value: '1806', type: REG_DWORD, data: '0'}
@@ -33,7 +30,6 @@ actions:
 - !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\International\User Profile', value: 'HttpAcceptLanguageOptOut', type: REG_DWORD, data: '1'}
 
 # - Disable ValueBanners in Windows 11 Settings (Requires TrustedInstaller permissions)
-# ------> Credits to @he3als for finding more reliable method.
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\ValueBanner.IdealStateFeatureControlProvider', value: 'ActivationType', type: REG_DWORD, data: '0'}
 
 # - Show me notifications in the Settings app - Off
@@ -47,7 +43,7 @@ actions:
 - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsAI', value: 'DisableAIDataAnalysis', type: REG_DWORD, data: '1'}
 
 # - Remove Metadata Tracking
-- !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata', operation: add}
+- !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata', operation: delete}
 
 # - Disabled Search
 - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'DisableWebSearch', type: REG_DWORD, data: '1'}
@@ -75,7 +71,7 @@ actions:
 # - Disables SmartScreen
 - !registryValue: {path: 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost', value: 'ContentEvaluation', type: REG_DWORD, data: '0'}
 
-# - Search
+# - Turn off Windows Search
 - !registryValue: {path: 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search', value: 'BingSearchEnabled', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search', value: 'CortanaConsent', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search', value: 'CortanaInAmbientMode', type: REG_DWORD, data: '0'}
@@ -334,12 +330,7 @@ actions:
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync', value: 'DisableSettingSync', type: REG_DWORD, data: '2'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync', value: 'DisableSettingSyncUserOverride', type: REG_DWORD, data: '0'}
 
-# - Turn off application compatbility engine
-# - Turn off application telemetry 
-# - Turn off problem step recoreder
-# - Turn off program compatibility assistant
-# - Turn off program inventory
-# - Turn off switchback compatibility engine
+# - Turn off telemetry engine
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat', value: 'DisableEngine', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat', value: 'AITEnable', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat', value: 'DisableUAR', type: REG_DWORD, data: '1'}
@@ -389,11 +380,6 @@ actions:
 # - Turn off branchecahe
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PeerDist\Service', value: 'Enable', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\PeerDist\Service', value: 'Enable', type: REG_DWORD, data: '0'}
-
-# - Disable appv client
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AppV\Client', value: 'Enabled', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppV\Client', value: 'Enabled', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\AppV\Client', value: 'Enabled', type: REG_DWORD, data: '0'}
 
 # - Disable dynamic virtualization
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\AppV\Client\Virtualization', value: 'EnableDynamicVirtualization', type: REG_DWORD, data: '0'}
@@ -489,26 +475,6 @@ actions:
 # - Disable automatic update speech data
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Speech', value: 'AllowSpeechModelUpdate', type: REG_DWORD, data: '0'}
 
-# - Turn off lltdio driver
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'EnableLLTDIO', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'AllowLLTDIOOnDomain', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'AllowLLTDIOOnPublicNet', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'ProhibitLLTDIOOnPrivateNet', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'EnableLLTDIO', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'AllowLLTDIOOnDomain', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'AllowLLTDIOOnPublicNet', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'ProhibitLLTDIOOnPrivateNet', type: REG_DWORD, data: '0'}
-
-# - Turn off responder driver
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'EnableRspndr', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'AllowRspndrOnDomain', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'AllowRspndrOnPublicNet', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD', value: 'ProhibitRspndrOnPrivateNet', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'EnableRspndr', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'AllowRspndrOnDomain', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'AllowRspndrOnPublicNet', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD', value: 'ProhibitRspndrOnPrivateNet', type: REG_DWORD, data: '0'}
-
 # - Turn off module logging
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging', value: 'EnableModuleLogging', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ModuleLogging', value: 'EnableModuleLogging', type: REG_DWORD, data: '0'}
@@ -530,10 +496,6 @@ actions:
 
 # - Disable recommended troubleshooting
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation', value: 'UserPreference', type: REG_DWORD, data: '0'}
-
-# - Disable hotspot authentication
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HotspotAuthentication', value: 'Enabled', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\HotspotAuthentication', value: 'Enabled', type: REG_DWORD, data: '0'}
 
 # - Disable reserved storage
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager', value: 'MiscPolicyInfo', type: REG_DWORD, data: '2'}
@@ -576,12 +538,12 @@ actions:
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'SystemUsesLightTheme', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'AppsUseLightTheme', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'Hidden', type: REG_DWORD, data: '1'}
-- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer', value: 'DisableNotificationCenter', operation: delete}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer', value: 'DisableNotificationCenter', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DWM', value: 'DWMA_TRANSITTIONS_FORCEDISABLED', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DWM', value: 'DisallowAnimations', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DWM', value: 'AnimationAttributionEnabled', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'UseOLEDTaskbarTransparency', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer', value: 'DisableNotificationCenter', operation: delete}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer', value: 'DisableNotificationCenter', type: REG_DWORD, data: '1'}
 
 # - Disable device health attestation monitoring and reporting
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\DeviceHealthAttestationService', value: 'EnableDeviceHealthAttestationService', type: REG_DWORD, data: '0'}
@@ -697,9 +659,6 @@ actions:
 
 # - Disable apps access - Calendar
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments', value: 'Value', type: REG_SZ, data: 'Deny'}
-
-# - Disable LMHOSTS
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters', value: 'EnableLMHOSTS', type: REG_DWORD, data: '0'}
 
 # - Disable Suggested Actions
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SmartActionPlatform\SmartClipboard', value: 'Disabled', type: REG_DWORD, data: '1'}

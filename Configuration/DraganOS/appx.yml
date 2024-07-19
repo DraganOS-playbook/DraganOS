@@ -63,7 +63,6 @@ actions:
   - !appx: {name: '*Zune*', type: family}
   - !appx: {name: '*WindowsBackup*', type: app}
   - !appx: {name: '*Paint*', type: family}
-  - !appx: {name: '*WindowsNotepad*', type: family}
   - !appx: {name: '*Microsoft.Edge*', type: app}
 
   - !appx: {name: '*Client.CBS*', operation: clearCache}

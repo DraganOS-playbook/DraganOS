@@ -20,11 +20,12 @@ actions:
   args: '-NoP -ExecutionPolicy Bypass -File SVCGROUP.ps1'
   weight: 50
 
-  - !taskKill: {name: "explorer"}
-  - !taskKill: {name: "SecurityHealthHost"}
-  - !taskKill: {name: "SecurityHealthService"}
-  - !taskKill: {name: "SecurityHealthSystray"}
-  - !taskKill: {name: "SkypeBackgroundHost"}
+- !taskKill: {name: "explorer"}
+- !taskKill: {name: "SecurityHealthHost"}
+- !taskKill: {name: "SecurityHealthService"}
+- !taskKill: {name: "SecurityHealthSystray"}
+- !taskKill: {name: "SkypeBackgroundHost"}
+- !taskKill: {name: "onedrive"}
 
 - !writeStatus: {status: "Removing logs"}
 - !run:
