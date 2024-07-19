@@ -11,6 +11,7 @@ actions:
   exeDir: true
   exe: "BACKUPSERVICES.CMD"
 
+- !service: {name: 'PerfHost', operation: change, startup: '4'}
 - !service: {name: 'AppReadiness', operation: change, startup: '4'}
 - !service: {name: 'bam', operation: change, startup: '4'}
 - !service: {name: 'EFS', operation: change, startup: '4'}
