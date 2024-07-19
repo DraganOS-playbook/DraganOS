@@ -11,10 +11,12 @@ actions:
   exeDir: true
   exe: "BACKUPSERVICES.CMD"
 
+# perceptionsimulation
 - !service: {name: 'CDPUserSvc', operation: change, startup: '4'}
 - !service: {name: 'wlpasvc', operation: change, startup: '4'}
 - !service: {name: 'DmEnrollmentSvc', operation: change, startup: '4'}
 - !service: {name: 'WinRM', operation: change, startup: '4'}
+- !service: {name: 'vmicvss', operation: change, startup: '4'}
 - !service: {name: 'vmicheartbeat', operation: change, startup: '4'}
 - !service: {name: 'vmictimesync', operation: change, startup: '4'}
 - !service: {name: 'HvHost', operation: change, startup: '4'}
@@ -48,7 +50,6 @@ actions:
 - !service: {name: 'GameInputSvc', operation: change, startup: '4'}
 - !service: {name: 'lfsvc', operation: change, startup: '4'}
 - !service: {name: 'MixedRealityOpenXRSvc', operation: change, startup: '4'}
-- !service: {name: 'AppMgmt', operation: change, startup: '4'}
 - !service: {name: 'MapsBroker', operation: change, startup: '4'}
 - !service: {name: 'Ndu', operation: change, startup: '4'}
 - !service: {name: 'NetBT', operation: change, startup: '4'}
@@ -119,7 +120,6 @@ actions:
 - !service: {name: 'WMPNetworkSvc', operation: change, startup: '4'}
 - !service: {name: 'spectrum', operation: change, startup: '4'}
 - !service: {name: 'perceptionsimulation', operation: change, startup: '4'}
-- !service: {name: 'ClipSVC', operation: change, startup: '4'}
 - !service: {name: 'WalletService', operation: change, startup: '4'}
 - !service: {name: 'upnphost', operation: change, startup: '4'}
 - !service: {name: 'UdkUserSvc', operation: change, startup: '4'}
