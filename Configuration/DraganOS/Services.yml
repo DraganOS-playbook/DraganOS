@@ -12,6 +12,7 @@ actions:
   exe: "BACKUPSERVICES.CMD"
 
 # perceptionsimulation
+- !service: {name: 'TroubleshootingSvc', operation: change, startup: '4'}
 - !service: {name: 'tiledatamodelsvc', operation: change, startup: '4'}
 - !service: {name: 'CDPUserSvc', operation: change, startup: '4'}
 - !service: {name: 'wlpasvc', operation: change, startup: '4'}
