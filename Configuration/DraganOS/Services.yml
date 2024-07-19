@@ -11,7 +11,7 @@ actions:
   exeDir: true
   exe: "BACKUPSERVICES.CMD"
 
-# perceptionsimulation
+- !service: {name: 'perceptionsimulation', operation: change, startup: '4'}
 - !service: {name: 'TroubleshootingSvc', operation: change, startup: '4'}
 - !service: {name: 'tiledatamodelsvc', operation: change, startup: '4'}
 - !service: {name: 'CDPUserSvc', operation: change, startup: '4'}
