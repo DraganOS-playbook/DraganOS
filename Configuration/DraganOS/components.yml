@@ -43,9 +43,18 @@ actions:
   - !file: {path: "%SystemDrive%\\OneDriveTemp"}
   - !file: {path: "%ProgramData%\\Microsoft OneDrive"}
 
-  # Clear caches of Client.CBS and more
-  - !appx: {operation: clearCache, name: '*Windows.Search*'}
-  - !appx: {operation: clearCache, name: '*Windows.SecHealthUI*'}
-  # Necessary to refresh start menu entries etc.
+  - !powerShell: {command: 'Get-ScheduledTask -TaskPath "\Microsoft\Office\*" | Disable-ScheduledTask'}
+
+   # OneDrive Disable
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\OneDrive', value: 'DisableFileSyncNGSC', type: REG_DWORD, data: '1'}
+
+    # Necessary to refresh start menu entries etc.
   - !appx: {operation: clearCache, name: '*Client.CBS*'}
+  - !appx: {operation: clearCache, name: '*Windows.Search*'}
   - !appx: {operation: clearCache, name: '*TCUI*'}
+    # Workaround for KGL versions to match
+  - !appx: {operation: clearCache, name: '*XboxGameCallableUI*'}
+  - !appx: {operation: clearCache, name: '*XboxGameOverlay*'}
+  - !appx: {operation: clearCache, name: '*XboxGamingOverlay*'}
+  - !appx: {operation: clearCache, name: '*XboxIdentityProvider*'}
+  - !appx: {operation: clearCache, name: '*XboxSpeechToTextOverlay*'}

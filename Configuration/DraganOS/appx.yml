@@ -16,7 +16,6 @@ actions:
   - !appx: {name: '*GamingApp*', type: family}
   - !appx: {name: '*Getstarted*', type: family}
   - !appx: {name: '*Microsoft.549981C3F5F10*', type: family}
-  - !appx: {name: '*Microsoft.Calculator*', type: app}
   - !appx: {name: '*Microsoft.GetHelp*', type: family}
   - !appx: {name: '*Microsoft.Messaging*', type: family}
   - !appx: {name: '*Microsoft.OneConnect*', type: family}
@@ -45,7 +44,6 @@ actions:
   - !appx: {name: '*StorePurchaseApp*', type: family}
   - !appx: {name: '*Sway*', type: family}
   - !appx: {name: '*Wallet*', type: family}
-  - !appx: {name: '*WebExperienceHost*', type: app}
   - !appx: {name: '*Windows.DevHome*', type: family}
   - !appx: {name: '*WindowsCamera*', type: family}
   - !appx: {name: '*windowscommunicationsapps*', type: family}
@@ -61,10 +59,16 @@ actions:
   - !appx: {name: '*XboxSpeechToTextOverlay*', type: family}
   - !appx: {name: '*YourPhone*', type: family}
   - !appx: {name: '*Zune*', type: family}
-  - !appx: {name: '*WindowsBackup*', type: app}
+  - !appx: {name: '*WindowsBackup*', type: family}
   - !appx: {name: '*Paint*', type: family}
-  - !appx: {name: '*Microsoft.Edge*', type: app}
 
+  # do not deleted
+  - !appx: {name: '*Microsoft.Edge*', type: app}
+  - !appx: {name: '*Microsoft.Calculator*', type: app}
+  - !appx: {name: '*Microsoft.Notepad*', type: app}
+  - !appx: {name: '*WebExperienceHost*', type: app}
+
+  # Cache clear
   - !appx: {name: '*Client.CBS*', operation: clearCache}
   - !appx: {name: '*StartMenuExperienceHost*', operation: clearCache}
   - !appx: {name: '*Windows.Search*', operation: clearCache}

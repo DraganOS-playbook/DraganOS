@@ -8,6 +8,8 @@ dism.exe /online /disable-feature /featurename:MathRecognizer
 dism.exe /online /disable-feature /featurename:App.StepsRecorder
 dism.exe /Online /Cleanup-Image /StartComponentCleanup
 
+copy /y "Layout.xml" "!userAppdata!\Microsoft\Windows\Shell\LayoutModification.xml"
+
 reg delete "HKU\%%a\Software\Microsoft\Windows\CurrentVersion\Start" /v "Config" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "Attributes" /t reg_dword /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\3b04d4fd-1cc7-4f23-ab1c-d1337819c4bb" /v "Attributes" /t reg_dword /d "0" /f

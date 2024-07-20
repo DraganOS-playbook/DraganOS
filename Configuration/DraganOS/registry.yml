@@ -13,6 +13,7 @@ features:
 - tweaks\configure-security.yml
 - tweaks\configure-start-menu-and-taskbar-notifications.yml
 - tweaks\configure-windows-update.yml
+- tweaks\disable-scheduled-tasks.yml
 - tweaks\disable-ease-of-access-features.yml
 - tweaks\disable-uac.yml
 - tweaks\oem-information.yml

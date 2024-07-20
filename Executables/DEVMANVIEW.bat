@@ -1,6 +1,9 @@
 @echo off
 CD /d %~dp0
 
+devmanview.exe /disable "PCI Data Acquisition and Signal Processing Controller"
+devmanview.exe /disable "PCI Encryption/Decryption Controller"
+devmanview.exe /disable "PCI Simple Communications Controller"
 devmanview.exe /disable "PCI Memory Controller"
 devmanview.exe /disable "PCI standard RAM Controller"
 devmanview.exe /disable "AURA LED Controller"

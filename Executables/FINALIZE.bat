@@ -20,7 +20,6 @@ label C: DraganOS
 bcdedit /set {globalsettings} custom:16000067 true
 bcdedit /set {globalsettings} custom:16000068 true
 bcdedit /set {globalsettings} custom:16000069 true
-bcdedit /set nolowmem Yes
 bcdedit /set noumex Yes
 bcdedit /set bootems No
 bcdedit /set bootdebug off
@@ -35,10 +34,11 @@ bcdedit /set extendedinput Yes
 bcdedit /set highestmode Yes
 bcdedit /set forcefipscrypto No
 bcdedit /set allowedinmemorysettings 0
-bcdedit /set nx AlwaysOff
-bcdedit /set pae ForceDisable
 bcdedit /set perfmem 0
+bcdedit /set nolowmem Yes
 bcdedit /set configflags 0
+bcdedit /set nx optin
+bcdedit /set pae ForceDisable
 bcdedit /set x2apicpolicy Enable
 bcdedit /set bootux Disabled
 bcdedit /set queitboot Yes

@@ -27,6 +27,10 @@ actions:
 # ------> https://github.com/Jamesits/dropWPBT
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager', value: 'DisableWpbtExecution', type: REG_DWORD, data: '1'}
 
+# - Disabled WDF
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Wdf', value: 'WdfGlobalLogsDisabled', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Wdf', value: 'WdfGlobalSleepStudyDisabled', type: REG_DWORD, data: '1'}
+
 # - Configure Steam 
 - !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'SmoothScrollWebViews', type: REG_DWORD, data: '0', option: "configure-steam"}
 - !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'DWriteEnable', type: REG_DWORD, data: '0', option: "configure-steam"}
@@ -55,7 +59,7 @@ actions:
 
 # - Disable Window Game Recording and Broadcasting
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR', value: 'AllowGameDVR', operation: delete}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR', value: 'value', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR', value: 'value', type: REG_DWORD, data: '0'}
 
 # - Fix ms-gamingoverlay popup when removing xbox apps
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR', value: 'AppCaptureEnabled', type: REG_DWORD, data: '0'}

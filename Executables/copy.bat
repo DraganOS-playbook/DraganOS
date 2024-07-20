@@ -14,8 +14,6 @@ mkdir "%WINDIR%\Resources\Themes"
 robocopy "Themes" "%WINDIR%\Resources\Themes" /Y
 copy "PowerRun.exe" "%WINDIR%"
 
-copy /y "Layout.xml" "!userAppdata!\Microsoft\Windows\Shell\LayoutModification.xml"
-
 if "%%a" neq "AME_UserHive_Default" (
 	for /f "usebackq delims=" %%d in (`dir /b "!userAppdata!\Packages" /a:d ^| findstr /c:"Microsoft.Windows.StartMenuExperienceHost"`) do (
 	for /f "usebackq delims=" %%e in (`dir /b "!userAppdata!\Packages\%%d\LocalState" /a:-d ^| findstr /R /c:"start.\.bin" /c:"start\.bin"`) do (

@@ -65,11 +65,6 @@ actions:
   option: "remove-oned"
   weight: 50
 
-- !writeStatus: {status: "Configuring Laptop Settings"}
-- !run: 
-  exeDir: true
-  exe: "Laptop.bat"
-
 - !writeStatus: {status: "Configuring Device Manager"}
 - !run: 
   exeDir: true

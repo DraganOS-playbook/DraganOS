@@ -45,6 +45,20 @@ actions:
 # - Remove Metadata Tracking
 - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata', operation: delete}
 
+# - Settings/Disabled Tracking NDIS network
+- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DefaultPnPCapabilities', type: REG_DWORD, data: '24'}
+- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableNDISWatchDog', type: REG_DWORD, data: '1'}
+- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableNaps', type: REG_DWORD, data: '1'}
+- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableWDIWatchdogForceBugcheck', type: REG_DWORD, data: '1'}
+- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableReenumerationTimeoutBugcheck', type: REG_DWORD, data: '1'}
+- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'EnableNicAutoPowerSaverInSleepStudy', type: REG_DWORD, data: '0'}
+- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'NdisPowerSavingDS', type: REG_DWORD, data: '0'}
+- !registryKey: {path: 'HKLM\System\CurrentControlSet\Services\Tcpip\QoS', value: 'Do not use NLA', type: REG_SZ, data: '1'}
+- !registryKey: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched', value: 'NonBestEffortLimit', type: REG_DWORD, data: '0'}
+- !cmd: {command: 'netsh interface tcp set global autotuninglevel=restricted'}
+
+# - Settings/Disabled 
+
 # - Disabled Search
 - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'DisableWebSearch', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWeb', type: REG_DWORD, data: '0'}
@@ -223,8 +237,8 @@ actions:
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl', value: 'PsPrioritySeparation', type: REG_DWORD, data: '0'}
 
 # - reserve 0% of CPU resources for low-priority tasks instead of the default 20%
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'SystemResponsiveness', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'NetworkThrottlingIndex', type: REG_DWORD, data: '10'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'SystemResponsiveness', type: REG_DWORD, data: '10'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'NetworkThrottlingIndex', type: REG_DWORD, data: 'ffffffff'}
 
 # - Disable Windows Spotlight (Tips and suggestions)
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightFeatures', type: REG_DWORD, data: '1'}
