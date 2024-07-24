@@ -4,10 +4,11 @@ description: Runs all of the Playbook files
 privilege: Admin
 actions: []
 features:
-- DraganOS\start.yml
-- DraganOS\software.yml
-- DraganOS\appx.yml
-- DraganOS\Services.yml
-- DraganOS\components.yml
-- DraganOS\registry.yml
-- DraganOS\FinalTasks.yml
+- Dragan\start.yml
+- Dragan\software.yml
+- Dragan\Services.yml
+- Dragan\components.yml
+- Dragan\appx.yml
+- Dragan\registry.yml
+- Dragan\ScheduledTasks.yml
+- Dragan\FinalTasks.yml

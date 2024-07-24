@@ -3,8 +3,4 @@
 	"telemetry": {
 		"disable": true
 	}
-    // For documentation on these settings, see: https://aka.ms/winget-settings
-    // "source": {
-    //    "autoUpdateIntervalInMinutes": 5
-    // },
 }

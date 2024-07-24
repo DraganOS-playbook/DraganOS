@@ -10,6 +10,7 @@ actions:
 # - Disable Remote assistance
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance', value: 'fAllowFullControl', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance', value: 'fAllowToGetHelp', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance', value: 'fEnableChatControl', type: REG_DWORD, data: '0'}
 
 # - Disable diagnostic tracing
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance', value: 'DisableDiagnosticTracing', type: REG_DWORD, data: '1'}
@@ -37,47 +38,44 @@ actions:
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SystemSettings\AccountNotifications', value: 'EnableAccountNotifications', type: REG_DWORD, data: '0', weight: 50}
 
 # - Enable Sudo - On (Inline)
-- !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo', value: 'Enabled', type: REG_DWORD, data: '3'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo', value: 'Enabled', type: REG_DWORD, data: '3'}
 
 # - Disable Recall snapshots (24H2)
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsAI', value: 'DisableAIDataAnalysis', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsAI', value: 'DisableAIDataAnalysis', type: REG_DWORD, data: '1'}
 
 # - Remove Metadata Tracking
-- !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata', operation: delete}
+- !registryKey: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata', operation: delete}
 
 # - Settings/Disabled Tracking NDIS network
-- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DefaultPnPCapabilities', type: REG_DWORD, data: '24'}
-- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableNDISWatchDog', type: REG_DWORD, data: '1'}
-- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableNaps', type: REG_DWORD, data: '1'}
-- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableWDIWatchdogForceBugcheck', type: REG_DWORD, data: '1'}
-- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'DisableReenumerationTimeoutBugcheck', type: REG_DWORD, data: '1'}
-- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'EnableNicAutoPowerSaverInSleepStudy', type: REG_DWORD, data: '0'}
-- !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters', value: 'NdisPowerSavingDS', type: REG_DWORD, data: '0'}
-- !registryKey: {path: 'HKLM\System\CurrentControlSet\Services\Tcpip\QoS', value: 'Do not use NLA', type: REG_SZ, data: '1'}
-- !registryKey: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched', value: 'NonBestEffortLimit', type: REG_DWORD, data: '0'}
-- !cmd: {command: 'netsh interface tcp set global autotuninglevel=restricted'}
-
-# - Settings/Disabled 
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "DefaultPnPCapabilities" /t REG_DWORD /d "24" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "TrackNblOwner" /t REG_DWORD /d "0" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "DisableNDISWatchDog" /t REG_DWORD /d "1" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "DisableNaps" /t REG_DWORD /d "1" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "DisableWDIWatchdogForceBugcheck" /t REG_DWORD /d "1" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "DisableReenumerationTimeoutBugcheck" /t REG_DWORD /d "1" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "EnableNicAutoPowerSaverInSleepStudy" /t REG_DWORD /d "0" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "NdisPowerSavingDS" /t REG_DWORD /d "0" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\QoS" /v "Do not use NLA" /t REG_SZ /d "1" /f}
+- !cmd: {command: reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit" /t REG_DWORD /d "0" /f}
 
 # - Disabled Search
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'DisableWebSearch', type: REG_DWORD, data: '1'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWeb', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowIndexingEncryptedStoresOrItems', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowSearchToUseLocation', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AlwaysUseAutoLangDetection', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCortana', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'DisableWebSearch', type: REG_DWORD, data: '1'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWeb', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWebOverMeteredConnections', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCloudSearch', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'VoiceActivationDefaultOn', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'VoiceActivationEnableAboveLockscreen', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'ModelDownloadAllowed', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE', value: 'DisableVoice', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'DisableWebSearch', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowIndexingEncryptedStoresOrItems', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowSearchToUseLocation', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AlwaysUseAutoLangDetection', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCortana', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'DisableWebSearch', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWeb', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWebOverMeteredConnections', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCloudSearch', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'VoiceActivationDefaultOn', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'VoiceActivationEnableAboveLockscreen', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'ModelDownloadAllowed', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE', value: 'DisableVoice', type: REG_DWORD, data: '1'}
 
 # - Improve new user login experience
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\OOBE', value: 'DisablePrivacyExperience', type: REG_DWORD, data: '1'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableFirstLogonAnimation', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OOBE', value: 'DisablePrivacyExperience', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableFirstLogonAnimation', type: REG_DWORD, data: '0'}
 
 # - Disable opening GameBar when pressing the XBOX button on an XBOX controller
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\GameBar', value: 'UseNexusForGameBarEnabled', type: REG_DWORD, data: '0'}
@@ -116,11 +114,11 @@ actions:
 # - Turn off notification area cleanup
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoAutoTrayNotify', type: REG_DWORD, data: '1'}
 
-# - Enable printscreen for snipping tool
-- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Keyboard', value: 'PrintScreenKeyForSnippingEnabled', type: REG_DWORD, data: '0'}
+# - Disable printscreen for snipping tool
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Keyboard', value: 'PrintScreenKeyForSnippingEnabled', type: REG_SZ, data: '0'}
 
 # - Turn off quiet hours
-- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\QuietHours', value: 'Enable', type: REG_DWORD, data: '1'} 
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\QuietHours', value: 'Enable', type: REG_DWORD, data: '0'} 
 
 # - Disable Storage Sense
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy', value: '01', type: REG_DWORD, data: '0'}
@@ -238,7 +236,34 @@ actions:
 
 # - reserve 0% of CPU resources for low-priority tasks instead of the default 20%
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'SystemResponsiveness', type: REG_DWORD, data: '10'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'NetworkThrottlingIndex', type: REG_DWORD, data: 'ffffffff'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'NetworkThrottlingIndex', type: REG_DWORD, data: '10'}
+
+# - Do not crash's windows for services
+# - Author clqwnless, thanks.
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}', value: 'LowerFilters', type: REG_MULTI_SZ, data: ""}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}', value: 'UpperFilters', type: REG_MULTI_SZ, data: ""}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}', value: 'UpperFilters', type: REG_MULTI_SZ, data: ""}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}', value: 'LowerFilters', type: REG_MULTI_SZ, data: ""}
+
+# - Powercfg settigs/disabled powersaving
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583', value: 'Attributes', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\3b04d4fd-1cc7-4f23-ab1c-d1337819c4bb', value: 'Attributes', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\5d76a2ca-e8c0-402f-a133-2158492d58ad', value: 'Attributes', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\a55612aa-f624-42c6-a443-7397d064c04f', value: 'Attributes', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\ea062031-0e34-4ff1-9b6d-eb1059334028', value: 'Attributes', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings', value: 'ShowHibernateOption', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings', value: 'ShowSleepOption', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'Class1InitialUnparkCount', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'EnergyEstimationEnabled', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'HiberFileSizePercent', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'MfBufferingThreshold', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'PerfCalculateActualUtilization', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'EventProcessorEnabled', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'MSDisabled', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'FxAccountingTelemetryDisabled', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power', value: 'CoalescingFlushInterval', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PDC\Activators\Default\VetoPolicy', value: 'EA:EnergySaverEngaged', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PDC\Activators\28\VetoPolicy', value: 'EA:PowerStateDischarging', type: REG_DWORD, data: '0'}
 
 # - Disable Windows Spotlight (Tips and suggestions)
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightFeatures', type: REG_DWORD, data: '1'}
@@ -451,7 +476,7 @@ actions:
 - !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Accessibility\ToggleKeys', value: 'Flags', type: REG_SZ, data: '0'}
 
 # - slit SvcHostSplitThresholdInKB for group
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control', value: 'SvcHostSplitThresholdInKB', type: REG_DWORD, data: '5201604'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control', value: 'SvcHostSplitThresholdInKB', type: REG_DWORD, data: '5201604'}
 
 # - Disable Pointer Acceleration
 - !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Mouse', value: 'MouseThreshold1', type: REG_DWORD, data: '0'}
@@ -495,9 +520,9 @@ actions:
 
 # - Turn off powershell script Block logging
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockLogging', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockInvocationLogging', type: REG_SZ, data: '-'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockInvocationLogging', type: REG_SZ, data: '0'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockLogging', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockInvocationLogging', type: REG_SZ, data: '-'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockInvocationLogging', type: REG_SZ, data: '0'}
 
 # - Disable automatic setup of network devices
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\NcdAutoSetup\Private', value: 'AutoSetup', type: REG_DWORD, data: '0'}
@@ -568,11 +593,11 @@ actions:
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings', value: 'AllowRemoteRPC', type: REG_DWORD, data: '0'}
 
 # - Don`t send a windows error report when a generic driver is installed on a device
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'AutoApproveOSDumps', type: REG_DWORD, data: '0'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'Disabled', type: REG_DWORD, data: '1'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'DontSendAdditionalData', type: REG_DWORD, data: '1'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'DontShowUI', type: REG_DWORD, data: '1'}
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'LoggingDisabled', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'AutoApproveOSDumps', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'Disabled', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'DontSendAdditionalData', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'DontShowUI', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting', value: 'LoggingDisabled', type: REG_DWORD, data: '1'}
 
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings', value: 'DisableSendGenericDriverNotFoundToWER', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\DeviceInstall\Settings', value: 'DisableSendGenericDriverNotFoundToWER', type: REG_DWORD, data: '1'}

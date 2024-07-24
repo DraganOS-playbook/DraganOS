@@ -1,5 +1,5 @@
 @echo off
-set BACKUP="%winDir%\srvbackup\Windows-Default-services.reg"
+set BACKUP="%winDir%\srvbackupDragan\Windows-Default-services.reg"
 echo Windows Registry Editor Version 5.00 >>%BACKUP%
 
 for /f "delims=" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services"') do (

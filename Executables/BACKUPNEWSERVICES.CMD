@@ -1,5 +1,5 @@
 @echo off
-set BACKUP="%winDir%\srvbackup\DraganOS-Default-services.reg"
+set BACKUP="%winDir%\srvbackupDragan\DraganOS-Default-services.reg"
 echo Windows Registry Editor Version 5.00 >>%BACKUP%
 
 for /f "delims=" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services"') do (

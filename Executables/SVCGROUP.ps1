@@ -33,7 +33,7 @@ $services = @(
     "WpnService",
     "gpsvc",
     "iphlpsvc",
-	"wuauserv",
+    "wuauserv",
     "WinHttpAutoProxySvc",
     "EventLog",
     "TimeBrokerSvc",
@@ -42,11 +42,11 @@ $services = @(
     "FontCache",
     "nsi",
     "netprofm",
-	"SstpSvc",
+    "SstpSvc",
     "DispBrokerDesktopSvc",
     "CDPSvc",
     "EventSystem",
-	"LicenseManager",
+    "LicenseManager",
     "SystemEventsBroker",
     "Power",
     "LSM",
@@ -55,8 +55,8 @@ $services = @(
     "CoreMessagingRegistrar",
     "DPS",
     "NcdAutoSetup",
-	"AppXSvc",
-	"ClipSVC",
+    "AppXSvc",
+    "ClipSVC",
     "camsvc",
     "StateRepository",
     "FDResPub",
@@ -73,6 +73,7 @@ $services = @(
 foreach ($service in $services) {
     New-ItemProperty -Path "$registryPath\$service" -Name "SvcHostSplitDisable" -Value 1 -PropertyType DWord -Force
 }
+
 
 $userServices = @(
     "CDPUserSvc_*",

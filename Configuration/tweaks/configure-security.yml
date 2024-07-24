@@ -7,7 +7,7 @@ actions:
 # - Disable Meltdown and Inspectre
 # - FeatureSettings has to be set to 1 hexaDecimal to fully Disable these security protections
 # - Disable Paging
-- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management', value: 'FeatureSettingsOverride', type: REG_DWORD, data: '33554435'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management', value: 'FeatureSettingsOverride', type: REG_DWORD, data: '3'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management', value: 'FeatureSettingsOverrideMask', type: REG_DWORD, data: '3'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management', value: 'FeatureSettings', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management', value: 'DisablePagingExecutive', type: REG_DWORD, data: '1'}

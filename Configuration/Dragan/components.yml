@@ -1,0 +1,31 @@
+---
+title: Components
+description: Remove windows components and files
+privilege: TrustedInstaller
+actions:
+  - !writeStatus: {status: "Removing components"}
+
+  - !file: {path: "%windir%\\Web"}
+  - !file: {path: "%windir%\\InboxApps"}
+  - !file: {path: "%windir%\\System32\\BingMaps.dll"}
+  - !file: {path: "%windir%\\System32\\BingOnlineServices.dll"}
+  - !file: {path: "%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\Memory Diagnostics Tool.lnk"}
+  - !file: {path: "%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\ODBC Data Sources (32-bit).lnk"}
+  - !file: {path: "%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\ODBC Data Sources (64-bit).lnk"}
+  - !file: {path: "%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\RecoveryDrive.lnk"}
+  - !file: {path: "%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Administrative Tools\\Defragment and Optimize Drives.lnk"}
+  - !file: {path: "%windir%\\System32\\BingFilterDS.dll"}
+  - !file: {path: "%windir%\\System32\\BingASDS.dll"}
+  - !file: {path: "%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Maintenance"}
+  - !file: {path: "%userprofile%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Maintenance"}
+
+  # Allow uninstall of Edge, EdgeUpdate and WebView
+  - !registryValue: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge', value: 'NoRemove', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update', value: 'NoRemove', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeWebView', value: 'NoRemove', type: REG_DWORD, data: '0'}
+
+  # Clear caches of Client.CBS and more
+  - !appx: {operation: clearCache, name: '*Windows.Search*'}
+  - !appx: {operation: clearCache, name: '*Windows.SecHealthUI*'}
+  - !appx: {operation: clearCache, name: '*Client.CBS*'}
+  - !appx: {operation: clearCache, name: '*TCUI*'}

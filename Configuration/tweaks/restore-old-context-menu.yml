@@ -5,4 +5,4 @@ privilege: TrustedInstaller
 actions:
 
 # - Restore Old context menu
-- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', value: '', type: REG_SZ, data: '', option: "legacy-context-menu"}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', value: '', type: REG_SZ, data: ''}

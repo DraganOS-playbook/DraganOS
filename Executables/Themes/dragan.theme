@@ -3,7 +3,7 @@ DisplayName=Dragan 2.0
 ThemeId={9F1AEB0B-4DD7-44EF-8734-D4F82A341818}
 
 [Control Panel\Desktop]
-Wallpaper=%windir%\Post-Install\Wallpaper\default_desktop.jpg
+Wallpaper=%windir%\Web\Screeen\img100.jpg
 Pattern=
 MultimonBackgrounds=0
 PicturePosition=4
@@ -27,4 +27,4 @@ AppMode=Light
 VisualStyleVersion=10
 
 [MasterThemeSelector]
-MTSM=B66000
+MTSM=0F000000
