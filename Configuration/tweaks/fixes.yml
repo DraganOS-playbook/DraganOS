@@ -31,14 +31,6 @@ actions:
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Wdf', value: 'WdfGlobalLogsDisabled', type: REG_DWORD, data: '1'}
 - !registryValue: {path: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Wdf', value: 'WdfGlobalSleepStudyDisabled', type: REG_DWORD, data: '1'}
 
-# - Configure Steam 
-- !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'SmoothScrollWebViews', type: REG_DWORD, data: '0', option: "configure-steam"}
-- !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'DWriteEnable', type: REG_DWORD, data: '0', option: "configure-steam"}
-- !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'StartupMode', type: REG_DWORD, data: '0', option: "configure-steam"}
-- !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'H264HWAccel', type: REG_DWORD, data: '0', option: "configure-steam"}
-- !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'DPIScaling', type: REG_DWORD, data: '0', option: "configure-steam"}
-- !registryValue: {path: 'HKCU\SOFTWARE\Valve\Steam', value: 'GPUAccelWebViews', type: REG_DWORD, data: '0', option: "configure-steam"}
-
 # - Disable GameBar Tips
 - !registryValue: {path: 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar', value: 'ShowStartupPanel', type: REG_DWORD, data: '0'}
 - !registryValue: {path: 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar', value: 'UseNexusForGameBarEnabled', type: REG_DWORD, data: '0'}
@@ -65,4 +57,4 @@ actions:
 - !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR', value: 'AppCaptureEnabled', type: REG_DWORD, data: '0'}
 
 # Breaks 'Your Phone'
-- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsConsumerFeatures', operation: delete}
+- !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsConsumerFeatures', type: REG_DWORD, data: '0'}
